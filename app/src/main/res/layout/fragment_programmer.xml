@@ -145,19 +145,19 @@
 <!-- //////////////////////////////// -->
 
   <Button  android:id="@+id/buttonD"  android:layout_width="0dp"  android:layout_height="0dp"
-   android:background="@drawable/calculator_button_main"  android:fontFamily="@font/u5h" android:text="D"
+   android:background="@drawable/calculator_button_main"  android:fontFamily="@font/u8" android:text="="
       android:textColor="?attr/accentColor" android:textSize="@dimen/dizits_tekst_size"
       app:layout_constraintBottom_toTopOf="@+id/button9" app:layout_constraintTop_toBottomOf="@+id/buttonNOT"
    app:layout_constraintStart_toStartOf="parent"    app:layout_constraintEnd_toStartOf="@+id/buttonE"    />
 
   <Button  android:id="@+id/buttonE"  android:layout_width="0dp"  android:layout_height="0dp"
-   android:background="@drawable/calculator_button_main"  android:fontFamily="@font/u5h" android:text="E"
+   android:background="@drawable/calculator_button_main"  android:fontFamily="@font/u8" android:text=">"
       android:textColor="?attr/accentColor" android:textSize="@dimen/dizits_tekst_size"
       app:layout_constraintBottom_toTopOf="@+id/buttonA" app:layout_constraintTop_toBottomOf="@+id/buttonNOT"
    app:layout_constraintStart_toEndOf="@id/buttonD" app:layout_constraintEnd_toStartOf="@+id/buttonF"    />
 
   <Button    android:id="@+id/buttonF"    android:layout_width="0dp"    android:layout_height="0dp"
-   android:background="@drawable/calculator_button_main"    android:fontFamily="@font/u5h" android:text="F"
+   android:background="@drawable/calculator_button_main"    android:fontFamily="@font/u8" android:text="?"
       android:textColor="?attr/accentColor" android:textSize="@dimen/dizits_tekst_size"
       app:layout_constraintBottom_toTopOf="@+id/buttonB" app:layout_constraintTop_toBottomOf="@+id/buttonNOT"
       app:layout_constraintStart_toEndOf="@id/buttonE" app:layout_constraintEnd_toStartOf="@+id/button0"    />
@@ -183,19 +183,19 @@
    app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toStartOf="@+id/buttonA"  />
 
   <Button  android:id="@+id/buttonA"  android:layout_width="0dp"  android:layout_height="0dp"
-   android:background="@drawable/calculator_button_main"  android:fontFamily="@font/u5h" android:text="A"
+   android:background="@drawable/calculator_button_main"  android:fontFamily="@font/u8" android:text=":"
       android:textColor="?attr/accentColor" android:textSize="@dimen/dizits_tekst_size"
       app:layout_constraintBottom_toTopOf="@+id/button6" app:layout_constraintTop_toBottomOf="@+id/buttonE"
    app:layout_constraintStart_toEndOf="@id/button9" app:layout_constraintEnd_toStartOf="@+id/buttonB"  />
 
   <Button  android:id="@+id/buttonB"  android:layout_width="0dp"  android:layout_height="0dp"
-   android:background="@drawable/calculator_button_main"  android:fontFamily="@font/u5h" android:text="B"
+   android:background="@drawable/calculator_button_main"  android:fontFamily="@font/u8" android:text=";"
       android:textColor="?attr/accentColor" android:textSize="@dimen/dizits_tekst_size"
       app:layout_constraintBottom_toTopOf="@+id/button7" app:layout_constraintTop_toBottomOf="@+id/buttonF"
    app:layout_constraintStart_toEndOf="@id/buttonA" app:layout_constraintEnd_toStartOf="@+id/buttonC"    />
 
   <Button  android:id="@+id/buttonC"  android:layout_width="0dp"  android:layout_height="0dp"
-   android:background="@drawable/calculator_button_main"  android:fontFamily="@font/u5h" android:text="C"
+   android:background="@drawable/calculator_button_main"  android:fontFamily="@font/u8" android:text="<"
       android:textColor="?attr/accentColor" android:textSize="@dimen/dizits_tekst_size"
       app:layout_constraintBottom_toTopOf="@+id/button8" app:layout_constraintTop_toBottomOf="@+id/button0"
    app:layout_constraintStart_toEndOf="@id/buttonB" app:layout_constraintEnd_toStartOf="@+id/buttonMinus" />

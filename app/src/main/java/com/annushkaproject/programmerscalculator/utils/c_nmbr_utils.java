@@ -7,9 +7,18 @@ public class c_nmbr_utils {
         String nmbr_in_vrds = ""; char c; final int nmbr_string_length = heks_nmbr_string.length() ;
         for (int i = 0; i < nmbr_string_length ; i++){
             c = heks_nmbr_string.charAt(i);
-            nmbr_in_vrds = nmbr_in_vrds + dizit_names_array[Character.digit(c,16)] + ples_value_sphiks[nmbr_string_length-i-1] ;
+            nmbr_in_vrds = nmbr_in_vrds + dizit_names_array[dizit(c)] + ples_value_sphiks[nmbr_string_length-i-1] ;
             if (i < nmbr_string_length-1) { nmbr_in_vrds = nmbr_in_vrds + " " ; }
         };
         return nmbr_in_vrds ;
     }
+    public static int dizit(char ch) { return dizit(ch, '?'); }
+    public static int dizit(char ch, char lastdizitchar) {
+        int result = -1;
+        if (lastdizitchar < '0' || lastdizitchar > '0' + 8 + 7) return result;
+        int codePoint = (int)ch ; int lastdizit = (int)lastdizitchar ;
+        if ('0' <= codePoint && codePoint <= '0' + 8 + 7) result = codePoint - '0';
+        return result < lastdizit ? result : -1;
+    }
 }
+
