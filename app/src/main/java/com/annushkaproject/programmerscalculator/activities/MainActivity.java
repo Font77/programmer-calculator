@@ -17,6 +17,7 @@ import com.annushkaproject.programmerscalculator.R;
 import com.annushkaproject.programmerscalculator.fragments.ProgrammerFragment;
 import com.annushkaproject.programmerscalculator.fragments.StandardFragment;
 import com.annushkaproject.programmerscalculator.fragments.ThemesFragment;
+import com.annushkaproject.programmerscalculator.fragments.langs_fragment;
 import com.annushkaproject.programmerscalculator.model.ThemeSetting;
 import com.annushkaproject.programmerscalculator.utils.SharedPreferencesUtil;
 
@@ -79,7 +80,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, programmerFragment).commit();
         } else if (id == R.id.nav_themes) {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ThemesFragment()).commit();
-        } else if (id == R.id.nav_share) {
+        } else if (id == R.id.nav_languages) {
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new langs_fragment()).commit();
+        }  else if (id == R.id.nav_share) {
             Intent myIntent = new Intent(Intent.ACTION_SEND);
             myIntent.setType("text/plain");
             String shareBody = getString(R.string.share_website);

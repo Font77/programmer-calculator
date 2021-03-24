@@ -2,10 +2,10 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
     <group android:checkableBehavior="single">
-        <item android:id="@+id/nav_standard_mode" android:icon="@drawable/ic_menu_standard_mode"
-            android:title="@string/nav_drawer_standard" />
+        <item android:id="@+id/nav_standard_mode" android:icon="@drawable/ic_menu_standard_mode" android:title="@string/nav_drawer_standard" />
         <item android:id="@+id/nav_programmer_mode" android:icon="@drawable/ic_menu_programmer_mode" android:title="@string/nav_drawer_programmer" />
         <item android:id="@+id/nav_themes" android:icon="@drawable/ic_menu_themes" android:title="@string/nav_themes" />
+        <item android:id="@+id/nav_languages" android:icon="@drawable/ic_menu_themes" android:title="@string/zlang_nav_title" />
     </group>
     <item android:title="@string/nav_contacts">
         <menu>

@@ -32,29 +32,18 @@ public class ThemesFragment extends Fragment {
         SharedPreferencesUtil prefUtil = new SharedPreferencesUtil(getActivity());
         ThemeSetting themeSetting = prefUtil.loadThemeSetting();
         switch (themeSetting) {
-            case LIGHT:
-                lightRadio.setChecked(true);
-                darkRadio.setChecked(false);
-                break;
-            case DARK:
-                lightRadio.setChecked(false);
-                darkRadio.setChecked(true);
-                break;
-            case UNKNOWN:
-                lightRadio.setChecked(false);
-                darkRadio.setChecked(false);
-                break;
+            case LIGHT: lightRadio.setChecked(true);darkRadio.setChecked(false);break;
+            case DARK: lightRadio.setChecked(false);darkRadio.setChecked(true);break;
+            case UNKNOWN: lightRadio.setChecked(false);darkRadio.setChecked(false);break;
         }
 
-        lightRadio.setOnClickListener((v) -> {
-            ThemeSetting theme = ThemeSetting.LIGHT;
+        lightRadio.setOnClickListener((v) -> { ThemeSetting theme = ThemeSetting.LIGHT;
             prefUtil.saveThemeSetting(ThemeSetting.getThemeSettingByNumber(ThemeSetting.getNumberByThemeSetting(theme)));
             Log.d("ThemeChanged", "mode_enum radio pressed, current value: " + theme.toString());
             getActivity().recreate();
         });
 
-        darkRadio.setOnClickListener((v) -> {
-            ThemeSetting theme = ThemeSetting.DARK;
+        darkRadio.setOnClickListener((v) -> { ThemeSetting theme = ThemeSetting.DARK;
             prefUtil.saveThemeSetting(ThemeSetting.getThemeSettingByNumber(ThemeSetting.getNumberByThemeSetting(theme)));
             Log.d("ThemeChanged", "mode_enum radio pressed, current value: " + theme.toString());
             getActivity().recreate();

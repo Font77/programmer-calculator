@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relativeLayout" android:layout_width="match_parent" 
+    android:layout_height="match_parent" android:background="?attr/backgroundColor">
+
+    <RadioGroup android:id="@+id/langRadio" android:layout_width="0dp" android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <RadioButton android:id="@+id/lang_zing_button"
+            android:layout_width="match_parent" android:layout_height="50dp" android:layout_weight="1"
+            android:buttonTint="@color/accentColor"
+            android:fontFamily="@font/u5" android:text="zinglish" android:textColor="?attr/primaryTextColor" />
+
+        <RadioButton android:id="@+id/lang_hinDi_button"
+            android:layout_width="match_parent" android:layout_height="50dp" android:layout_weight="1"
+            android:buttonTint="@color/accentColorDark"
+            android:fontFamily="@font/u5" android:text="hinDi" android:textColor="?attr/primaryTextColor" />
+    </RadioGroup>
+</android.support.constraint.ConstraintLayout>

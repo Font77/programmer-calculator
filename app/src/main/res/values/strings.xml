@@ -56,6 +56,7 @@
     <string name="phlot_div_button_label" translatable="false">÷_f</string>
     <string name="decimal_point_label" translatable="false">.0?</string>
     <string name="app_title_string" translatable="false">vk.com/etphor 8+8=10=4*4</string>
+    <string name="zlang_nav_title">zlANg</string>
 
     <string-array name="decimal_points_selection_array">
         <item>0</item>
