@@ -1,0 +1,203 @@
+@startuml
+class com.annushkaproject.programmerscalculator.utils.StandardOperationsUtil {
++ {static} int SCALE
++ {static} double calculateResultForTwoSidedOperator(CalculationModel)
++ {static} double calculatePercentForData(CalculationModel)
++ {static} double calculateResultForOneSidedOperator(double,Operator)
+- {static} double calculateFactorial(double)
+}
+class com.annushkaproject.programmerscalculator.utils.c_nmbr_utils {
++ {static} String[] dizit_names_array
++ {static} String[] ples_value_sphiks
++ {static} String heks_nmbr_string_to_vrdsstring(String)
+}
+class com.annushkaproject.programmerscalculator.model.ProgrammerCalcModel {
+- int_size_enum bytelengthenum
++ int_size_enum getBytelengthenum()
++ void setBytelengthenum(int_size_enum)
++ void updateValues(String,mode_enum)
+}
+class com.annushkaproject.programmerscalculator.model.CalculationModel {
+- BigDecimal firstValue
+- BigDecimal secondValue
+- Operator operator
++ BigDecimal getFirstValue()
++ BigDecimal getSecondValue()
++ Operator getOperator()
++ void setFirstValue(double)
++ void setSecondValue(double)
++ void setSecondValueEqualToFirst()
++ void setOperator(Operator)
++ void resetCalcState()
++ void updateValues(String)
++ void updateAfterCalculation(double)
++ String textForValue(double)
++ boolean isNotNumber()
++ boolean isFirstIntegerValue()
+}
+class com.annushkaproject.programmerscalculator.fragments.c_handle_decimal_spinboks {
++ void onItemSelected(AdapterView<?>,View,int,long)
++ void onNothingSelected(AdapterView<?>)
+}
+class com.annushkaproject.programmerscalculator.utils.SharedPreferencesUtil {
+- {static} String PREF
+- {static} String THEME_SETTING_KEY
+- {static} String lang_settings_key
+- {static} String PREFERENCES_LOG_TAG
+- SharedPreferences preferences
+- SharedPreferences.Editor preferencesEditor
++ void saveThemeSetting(ThemeSetting)
++ void save_lang_setting(kl_lang_setting)
++ ThemeSetting loadThemeSetting()
++ kl_lang_setting load_language_setting()
++ void onPreferencesUpdated(AppearanceUpdateInterface)
+}
+class com.annushkaproject.programmerscalculator.utils.InstanceStateUtil {
++ {static} CalculationModel restoreSavedInstance(Bundle)
++ {static} ProgrammerCalcModel restoreProgrammerSavedInstance(Bundle)
++ {static} void saveInstanceState(Bundle,CalculationModel,String)
++ {static} void saveInstanceState(Bundle,ProgrammerCalcModel,String)
+}
+class com.annushkaproject.programmerscalculator.fragments.StandardFragment {
+- TextView textView
+- ArrayList<Button> numberButtons
+- ArrayList<Button> operatorButtons
+- CalculationModel calcModel
+- boolean secondValueInputStarted
+- String packageName
++ View onCreateView(LayoutInflater,ViewGroup,Bundle)
++ void onViewCreated(View,Bundle)
++ void onSaveInstanceState(Bundle)
++ void setupFragment(String)
+- void fillNumberButtons()
+- String currentString()
+- void fillOperatorButtons()
+- void setupCalculateButton()
+- void setupDeleteButton()
+- void setupClearButton()
+- void setupSignButton()
+- void usePressedNumber(String)
+- void usePiPressedNumber()
+- void usePressedOperator(Operator)
+- void useEqualsOperator()
+- void calculateResult()
+- void handleNotANumberCase()
+- void updateText(String)
+- void showDigitsLimitWarning()
+- boolean isInLandscapeOrientation()
+}
+interface com.annushkaproject.programmerscalculator.Interfaces.AppearanceUpdateInterface {
+~ void needUpdateAppearance(ThemeSetting)
+}
+class com.annushkaproject.programmerscalculator.activities.MainActivity {
+# void onCreate(Bundle)
++ void onBackPressed()
++ boolean onNavigationItemSelected(MenuItem)
+}
+class com.annushkaproject.programmerscalculator.model.HistoryResult {
+- String result
+- Date saveDate
+- String id
++ void setResult(String)
++ String getResult()
++ Date getSaveDate()
++ String getId()
+}
+class com.annushkaproject.programmerscalculator.fragments.langs_fragment {
++ View onCreateView(LayoutInflater,ViewGroup,Bundle)
++ void onViewCreated(View,Bundle)
+}
+class com.annushkaproject.programmerscalculator.activities.HistoryActivity {
+- ListView historyListView
+- ArrayAdapter arrayAdapter
+~ ArrayList<String> historyResults
+# void onCreate(Bundle)
++ boolean onOptionsItemSelected(MenuItem)
+- ArrayList<String> getResults()
+- void deleteItem(int)
+}
+class com.annushkaproject.programmerscalculator.utils.ProgrammerOperationsUtil {
++ {static} long calculateWithData(ProgrammerCalcModel)
+- {static} long addSubtract(int_size_enum,BigDecimal,BigDecimal)
+- {static} long changeSign(int_size_enum,BigDecimal)
+- {static} long lsh(int_size_enum,BigDecimal,BigDecimal)
+- {static} long rsh(int_size_enum,BigDecimal,BigDecimal)
+- {static} long not(int_size_enum,BigDecimal)
+- {static} long or(int_size_enum,BigDecimal,BigDecimal)
+- {static} long xor(int_size_enum,BigDecimal,BigDecimal)
+- {static} long and(int_size_enum,BigDecimal,BigDecimal)
+- {static} long mod(int_size_enum,BigDecimal,BigDecimal)
+- {static} long multiply(int_size_enum,BigDecimal,BigDecimal)
+- {static} long divide(int_size_enum,BigDecimal,BigDecimal)
+}
+class com.annushkaproject.programmerscalculator.fragments.ProgrammerFragment {
+- TextView u5h_tekst_viyu
+- TextView u2b_tekst_viyu
+- TextView dizit_tekst_viyu
+- TextView ekuation_tekst_viyu
+- ProgrammerCalcModel calcModel
+- boolean secondValueInputStarted
+- String packageName
+- int_size_enum bytelengthenum
+- mode_enum modeenum
+- boolean limit_phen_dizits_recahed
+- int limit_dizits
++ View onCreateView(LayoutInflater,ViewGroup,Bundle)
++ void onViewCreated(View,Bundle)
++ void onSaveInstanceState(Bundle)
++ void setupFragment(String)
+- void setupNumberButtons()
+- void setupLetterButtons()
+- void setupOperatorButtons()
+- void setupCalculateButton()
+- void setupDeleteButton()
+- void setupSignButton()
+- String currentString()
+- void setupWordLengthButton()
+- void setup_heks_cb()
+- void setup_decimal_spinner()
+- void usePressedNumber(String)
+- void usePressedOperator(Operator)
+- void useEqualsOperator()
+- void calculateResult()
+- String formatText(long)
+- void updateText(String)
+- void setTextViewValue(Double)
+- void disableOperatorButtons()
+- void enableOperatorButtons()
+- void disableAllButtons()
+- void enableButtonsDEC()
+- void enableButtonsALL()
+- void setLetterButtonsClickable(boolean)
+- void setNumberButtonsClickable(int,boolean)
+- void setOperatorButtonsClickable(boolean)
+}
+class com.annushkaproject.programmerscalculator.managers.HistoryManager {
+- {static} String DATABASE_NAME
+- {static} HistoryManager managerInstance
+- RealmConfiguration config
+- Realm realm
++ {static} HistoryManager getSharedInstance()
++ void printDatabaseLocation()
++ void save(String)
++ void deleteResult(HistoryResult)
++ ArrayList<HistoryResult> fetchAllHistoryResults()
+}
+class com.annushkaproject.programmerscalculator.fragments.ThemesFragment {
++ View onCreateView(LayoutInflater,ViewGroup,Bundle)
++ void onViewCreated(View,Bundle)
+}
+
+
+com.annushkaproject.programmerscalculator.model.CalculationModel <|-- com.annushkaproject.programmerscalculator.model.ProgrammerCalcModel
+com.annushkaproject.programmerscalculator.fragments.OnItemSelectedListener <|.. com.annushkaproject.programmerscalculator.fragments.c_handle_decimal_spinboks
+android.app.Activity <|-- com.annushkaproject.programmerscalculator.fragments.c_handle_decimal_spinboks
+android.support.v4.app.Fragment <|-- com.annushkaproject.programmerscalculator.fragments.StandardFragment
+com.annushkaproject.programmerscalculator.activities.OnNavigationItemSelectedListener <|.. com.annushkaproject.programmerscalculator.activities.MainActivity
+android.support.v7.app.AppCompatActivity <|-- com.annushkaproject.programmerscalculator.activities.MainActivity
+io.realm.RealmObject <|-- com.annushkaproject.programmerscalculator.model.HistoryResult
+android.support.v4.app.Fragment <|-- com.annushkaproject.programmerscalculator.fragments.langs_fragment
+android.support.v7.app.AppCompatActivity <|-- com.annushkaproject.programmerscalculator.activities.HistoryActivity
+android.support.v4.app.Fragment <|-- com.annushkaproject.programmerscalculator.fragments.ProgrammerFragment
+android.support.v4.app.Fragment <|-- com.annushkaproject.programmerscalculator.fragments.ThemesFragment
+@enduml
