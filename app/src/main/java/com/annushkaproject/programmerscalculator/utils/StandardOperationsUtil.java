@@ -1,51 +1,24 @@
 package com.annushkaproject.programmerscalculator.utils;
 
-import com.annushkaproject.programmerscalculator.model.CalculationModel;
+import com.annushkaproject.programmerscalculator.model.ProgrammerCalcModel;
 import com.annushkaproject.programmerscalculator.model.Operator;
 
 import java.math.RoundingMode;
 
 public class StandardOperationsUtil {
-
     public static final int SCALE = 20;
-
-    /**
-     * Used to calculate the result for operators that require two values.
-     * @param data Model that will be used for calculations.
-     * @return Calculated result.
-     */
-    public static double calculateResultForTwoSidedOperator(CalculationModel data) {
-        if (data.getSecondValue() == null) {
-            data.setSecondValueEqualToFirst();
-        }
-
-        if (!data.getOperator().requiresTwoValues()) {
-            return -1; //TODO: throw an exception.
-        }
-
+    public static double calculateResultForTwoSidedOperator(ProgrammerCalcModel data) {
+        if (data.getSecondValue() == null) data.setSecondValueEqualToFirst();
+        if (!data.getOperator().requiresTwoValues()) return -1; /*TODO: throw an exception.*/
         double result;
         switch (data.getOperator()) {
-            case ADD:
-                result = data.getFirstValue().add(data.getSecondValue()).doubleValue();
-                break;
-            case SUBTRACT:
-                result = data.getFirstValue().subtract(data.getSecondValue()).doubleValue();
-                break;
-            case MULTIPLY:
-                result = data.getFirstValue().multiply(data.getSecondValue()).doubleValue();
-                break;
-            case remainder_divide:
-                result = data.getFirstValue().divide(data.getSecondValue(), SCALE, RoundingMode.HALF_UP).doubleValue();
-                break;
-            case POWER:
-                result = data.getFirstValue().pow(data.getSecondValue().intValue()).doubleValue();
-                break;
-
-            default:
-                //TODO: throw exception or crush the app.
-                return 0;
+            case ADD: result = data.getFirstValue().add(data.getSecondValue()).doubleValue();break;
+            case SUBTRACT: result = data.getFirstValue().subtract(data.getSecondValue()).doubleValue();break;
+            case MULTIPLY: result = data.getFirstValue().multiply(data.getSecondValue()).doubleValue();break;
+            case remainder_divide: result = data.getFirstValue().divide(data.getSecondValue(), SCALE, RoundingMode.HALF_UP).doubleValue();break;
+            case POWER: result = data.getFirstValue().pow(data.getSecondValue().intValue()).doubleValue();break;
+            default: return 0;
         }
-
         return result;
     }
 
@@ -54,7 +27,7 @@ public class StandardOperationsUtil {
      * @param data Model for calculations.
      * @return Calculated result.
      */
-    public static double calculatePercentForData(CalculationModel data) {
+    public static double calculatePercentForData(ProgrammerCalcModel data) {
         if (data.getSecondValue() == null) {
             return -1; //TODO: throw an exception.
         }
@@ -107,28 +80,13 @@ public class StandardOperationsUtil {
                 return Math.abs(number);
             case SQUARE_ROOT:
                 return Math.sqrt(number);
-            case FACTORIAL:
-                return StandardOperationsUtil.calculateFactorial(number);
-
-            default:
-                //TODO: throw exception or crush the app.
-                return 0;
+            case FACTORIAL: return StandardOperationsUtil.calculateFactorial(number);
+            default: return 0;
         }
     }
-
-    /**
-     * Used to calculate factorials.
-     * @param value Value for calculation.
-     * @return Calculated result.
-     */
     static private double calculateFactorial(double value) {
         double result = 1;
-
-        for (int i = 2; i <= value; i++) {
-            result *= i;
-        }
-
+        for (int i = 2; i <= value; i++) result *= i;
         return result;
     }
-
 }

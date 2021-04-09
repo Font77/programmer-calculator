@@ -22,7 +22,7 @@
 
 <!--    android:layout_marginStart="8dp" android:layout_marginTop="8dp" android:layout_marginEnd="8dp"-->
     <TextView android:id="@+id/ekuation_tekst_viyu" android:layout_width="0dp" android:layout_height="48dp"
-        android:fontFamily="@font/u5" android:text="" android:textAlignment="textEnd"
+        android:fontFamily="@font/u5" android:text="" android:textAlignment="textEnd" android:scrollbars="vertical"
         android:textColor="?attr/primaryTextColor" android:textSize="@dimen/ekuation_tekst_viyu_size"
         app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toStartOf="@+id/dizit_tekst_viyu"
         app:layout_constraintTop_toBottomOf="@+id/u2b_tekst_viyu" />

@@ -19,6 +19,7 @@ import com.annushkaproject.programmerscalculator.activities.HistoryActivity;
 import com.annushkaproject.programmerscalculator.managers.HistoryManager;
 import com.annushkaproject.programmerscalculator.model.CalculationModel;
 import com.annushkaproject.programmerscalculator.model.Operator;
+import com.annushkaproject.programmerscalculator.model.ProgrammerCalcModel;
 import com.annushkaproject.programmerscalculator.utils.InstanceStateUtil;
 import com.annushkaproject.programmerscalculator.utils.StandardOperationsUtil;
 
@@ -30,7 +31,7 @@ public class StandardFragment extends Fragment {
     private ArrayList<Button> numberButtons = new ArrayList<>();
     private ArrayList<Button> operatorButtons = new ArrayList<>();
 
-    private CalculationModel calcModel = new CalculationModel();
+    private ProgrammerCalcModel calcModel = new ProgrammerCalcModel();
     private boolean secondValueInputStarted = false;
 
     private String packageName;

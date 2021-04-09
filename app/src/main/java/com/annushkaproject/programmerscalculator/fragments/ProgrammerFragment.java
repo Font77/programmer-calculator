@@ -15,7 +15,6 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.annushkaproject.programmerscalculator.R;
-import com.annushkaproject.programmerscalculator.model.mode_enum;
 import com.annushkaproject.programmerscalculator.model.Operator;
 import com.annushkaproject.programmerscalculator.model.ProgrammerCalcModel;
 import com.annushkaproject.programmerscalculator.model.int_size_enum;
@@ -32,7 +31,7 @@ public class ProgrammerFragment extends Fragment {
     private String packageName;
     private int_size_enum bytelengthenum = int_size_enum.l8;
 //    private mode_enum modeenum = mode_enum.mode_enum_dec;
-    private mode_enum modeenum = mode_enum.mode_enum_heks;
+//    private mode_enum modeenum = mode_enum.mode_enum_heks;
     private boolean limit_phen_dizits_recahed = false ;
     private int limit_dizits = 14 ;
 //    String[] dizit_nems_array = getResources().getStringArray(R.array.dizit_nems_array);
@@ -55,7 +54,14 @@ public class ProgrammerFragment extends Fragment {
         //setupClearButton(); TODO: add clear button
         setupSignButton();
 //        setupModeRadio();
-        setup_heks_cb(); modeenum = mode_enum.mode_enum_heks; enableButtonsALL();
+
+        // heks related
+        calcModel.setNmbr_base(16);
+        enableButtonsALL();
+        setup_heks_cb();
+        //modeenum = mode_enum.mode_enum_heks;
+
+
         setup_decimal_spinner();
         setupWordLengthButton();
     }
@@ -145,7 +151,7 @@ public class ProgrammerFragment extends Fragment {
     }); }
 
     private void setupSignButton() { Button signButton = getView().findViewById(R.id.buttonSign);signButton.setOnClickListener(v -> {
-            long currentValue = Long.parseLong(currentString(), modeenum.getBase());
+            long currentValue = Long.parseLong(currentString(), calcModel.get_nmbr_base());
             if (currentValue == 0) return;
             String updatedString = formatText(currentValue);
             if (currentValue > 0) updatedString = "-" + updatedString; else updatedString = updatedString.substring(1);
@@ -154,7 +160,7 @@ public class ProgrammerFragment extends Fragment {
     }
     private String currentString() { return u5h_tekst_viyu.getText().toString(); }
     private void setupWordLengthButton() { Button modeButton = getView().findViewById(R.id.buttonLength);modeButton.setOnClickListener(v -> {
-            long val = Long.parseLong(currentString(), modeenum.getBase());
+            long val = Long.parseLong(currentString(), calcModel.get_nmbr_base());
             if (bytelengthenum.ordinal() < 3) {
                 int num = bytelengthenum.ordinal();
                 bytelengthenum = int_size_enum.values()[++num];
@@ -170,32 +176,18 @@ public class ProgrammerFragment extends Fragment {
             modeButton.setText(bytelengthenum.toString());
         });
     }
-
-//    private void setupModeRadio() { RadioGroup radioGroup = getView().findViewById(R.id.radioGroup);radioGroup.setOnCheckedChangeListener((v, id) -> {
-//            long number = Long.parseLong(textView.getText().toString(), modeenum.getBase());
-//            switch (id) {
-//                case R.id.radioButtonHex: modeenum = mode_enum.mode_enum_heks; enableButtonsALL(); break;
-//                case R.id.radioButtonDec: modeenum = mode_enum.mode_enum_dec; enableButtonsDEC(); break;
-//                // case R.id.radioButtonOct: modeenum = mode_enum.OCT; enableButtonsOCT(); break; case R.id.radioButtonBin: modeenum = mode_enum.BIN; enableButtonsBIN(); break;
-//            }
-//            updateText(formatText(number));
-//            Log.d("ModeChanged", "mode_enum radio pressed, current value: " + modeenum.toString());
-//        });
-//    }
     private void setup_heks_cb() {
         CheckBox heks_cb = getView().findViewById(R.id.heks_check_boks); heks_cb.setOnCheckedChangeListener( (v, id) -> {
-            long number = Long.parseLong(u5h_tekst_viyu.getText().toString(), modeenum.getBase());
-            if (heks_cb.isChecked()) { modeenum = mode_enum.mode_enum_heks; enableButtonsALL(); }
-            else {modeenum = mode_enum.mode_enum_dec; enableButtonsDEC();}
+            long number = Long.parseLong(u5h_tekst_viyu.getText().toString(), calcModel.get_nmbr_base());
+            if (heks_cb.isChecked()) { calcModel.setNmbr_base(16); enableButtonsALL(); }
+            else {calcModel.setNmbr_base(10); enableButtonsDEC();}
             updateText(formatText(number));
         });
     }
     private void setup_decimal_spinner() {
         Spinner spinner = getView().findViewById(R.id.decimal_precision_spinner);
         String[] decimal_points_items = getResources().getStringArray(R.array.decimal_points_selection_array);
-//        ArrayAdapter<String> adapter = ArrayAdapter.createFromResource();//new ArrayAdapter<String>(this, R.layout.fragment_programmer, R.id.text, decimal_points_items);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource( spinner.getContext(), // getActivity(),
-                R.array.decimal_points_selection_array, android.R.layout.simple_spinner_item);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource( spinner.getContext(), R.array.decimal_points_selection_array, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
 //        c_handle_decimal_spinboks spinboks_listener = new c_handle_decimal_spinboks() ;
@@ -228,7 +220,7 @@ public class ProgrammerFragment extends Fragment {
         secondValueInputStarted = true;
     }
 
-    private String formatText(long number) { return Long.toString(number, modeenum.getBase()).toUpperCase(); }
+    private String formatText(long number) { return Long.toString(number, calcModel.get_nmbr_base()).toUpperCase(); }
 
     private void updateText(String updatedText) {
         if(updatedText.length() > limit_dizits)
@@ -255,7 +247,7 @@ public class ProgrammerFragment extends Fragment {
             u5h_tekst_viyu.setText(updatedText);
             u2b_tekst_viyu.setText(updatedText);
             ekuation_tekst_viyu.setText(c_nmbr_utils.heks_nmbr_string_to_vrdsstring(updatedText));
-            calcModel.updateValues(updatedText, modeenum);
+            calcModel.updateValues(updatedText);
         }
     }
 

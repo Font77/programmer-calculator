@@ -5,8 +5,8 @@ import com.annushkaproject.programmerscalculator.model.Operator;
 import com.annushkaproject.programmerscalculator.model.ProgrammerCalcModel;
 
 public class InstanceStateUtil {
-    public static CalculationModel restoreSavedInstance(Bundle savedInstanceState) {
-        CalculationModel calcModel = new CalculationModel();
+    public static ProgrammerCalcModel restoreSavedInstance(Bundle savedInstanceState) {
+        ProgrammerCalcModel calcModel = new ProgrammerCalcModel();
             if (savedInstanceState.getBoolean("FIRST_VALUE_SAVED")) {
                 calcModel.setFirstValue(savedInstanceState.getDouble("FIRST_VALUE"));
             }
@@ -31,24 +31,6 @@ public class InstanceStateUtil {
         }
         calcModel.setSecondValue(savedInstanceState.getDouble("WORD_LENGTH"));
         return calcModel;
-    }
-    public static void saveInstanceState(Bundle outState, CalculationModel calcModel, String packageName) {
-        outState.putString("PACKAGE_NAME", packageName);
-        boolean firstValuePresent = calcModel.getFirstValue() != null;
-        boolean operatorPresent = calcModel.getOperator() != null;
-        boolean secondValuePresent = calcModel.getSecondValue() != null;
-        if (firstValuePresent) {
-            outState.putDouble("FIRST_VALUE", calcModel.getFirstValue().doubleValue());
-        }
-        if (operatorPresent) {
-            outState.putInt("OPERATOR", Operator.getNumberByOperator(calcModel.getOperator()));
-        }
-        if (secondValuePresent) {
-            outState.putDouble("SECOND_VALUE", calcModel.getSecondValue().doubleValue());
-        }
-        outState.putBoolean("FIRST_VALUE_SAVED", firstValuePresent);
-        outState.putBoolean("OPERATOR_SAVED", operatorPresent);
-        outState.putBoolean("SECOND_VALUE_SAVED", secondValuePresent);
     }
     public static void saveInstanceState(Bundle outState, ProgrammerCalcModel calcModel, String packageName) {
         outState.putString("PACKAGE_NAME", packageName);

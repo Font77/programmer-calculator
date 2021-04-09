@@ -1,3 +1,4 @@
+*.plantuml
 *.iml
 *.apk
 .gradle
